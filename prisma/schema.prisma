@@ -1,9 +1,10 @@
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -33,8 +34,8 @@ model BarbershopService {
   description  String
   imageUrl     String
   price        Decimal    @db.Decimal(10, 2)
-  barberShopId String
-  barberShop   Barbershop @relation(fields: [barberShopId], references: [id])
+  barbershopId String
+  barbershop   Barbershop @relation(fields: [barbershopId], references: [id])
   bookings     Booking[]
 }
 
